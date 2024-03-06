@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine, text
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 db_string = os.environ['DB_STRING']
 
 engine = create_engine(db_string)
