@@ -14,8 +14,8 @@ submitBtn.addEventListener("click",async(evt)=>{
   }
   // console.log("submit button is clicked");
   loader.style.display= "block";
-  password=passwordEmt.value;
-  email=emailEmt.value;
+  let password=passwordEmt.value;
+  let email=emailEmt.value;
   if (password.length<3){
     errorBlock.innerText="Password must be at least 3 characters long";
   } else {
