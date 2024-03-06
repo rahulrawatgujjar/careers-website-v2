@@ -1,22 +1,27 @@
-from flask import Flask, render_template, jsonify, request
-from database import load_jobs_from_db, load_job_from_db, add_application_to_db
+from flask import Flask, render_template, jsonify, request, Blueprint
+from database import load_jobs_from_db, load_job_from_db, add_application_to_db,applied_and_unapplied_jobs
+from flask_login import login_required,current_user
 
-app = Flask(__name__)
+core_routes= Blueprint("core",__name__)
 
-
-@app.route("/")
+@core_routes.route("/")
 def hello_world():
-  jobs = load_jobs_from_db()
-  return render_template("home.html", jobs=jobs)
+  jobs=[]
+  applied_jobs=[]
+  if not current_user.is_authenticated:
+    jobs = load_jobs_from_db()
+  else:
+    applied_jobs,jobs= applied_and_unapplied_jobs(current_user.id)
+  return render_template("home.html", jobs=jobs,applied_jobs=applied_jobs, is_authenticated= current_user.is_authenticated)
 
-
-@app.route("/api/jobs")
+@core_routes.route("/api/jobs")
 def list_jobs():
   jobs = load_jobs_from_db()
   return jsonify(jobs)
 
 
-@app.route("/job/<id>")
+@core_routes.route("/job/<id>")
+@login_required
 def show_job(id):
   job = load_job_from_db(id)
   if job:
@@ -25,13 +30,11 @@ def show_job(id):
     return "Not found", 404
 
 
-@app.route("/job/<id>/apply",methods=["post"])
+@core_routes.route("/job/<id>/apply",methods=["post"])
+@login_required
 def apply_to_job(id):
   data=request.form
   job=load_job_from_db(id)
-  add_application_to_db(id,data)
+  add_application_to_db(id,data,current_user.id)
   return render_template("application_submitted.html", application=data, job=job)
 
-
-if __name__ == "__main__":
-  app.run(host="0.0.0.0", debug=True)

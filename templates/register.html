@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    {% include "bootstrap.html" %}
+    <title>Register page</title>
+  </head>
+  <body>
+    <header>
+      {% include "nav.html" %}
+      {% include "banner.html" %}
+      <div class="container">
+        <h1 class="text-center mt-2 mb-2">
+          Register Page
+        </h1>
+    </header>
+    <main>
+      <div class="outter">
+        <div class="inner">
+          <form id="reg-form" action="/register" method="post">
+            <label for="name">
+              <h2>Name:</h2>
+              <input name="name" type="text" placeholder="Tony Stark" id="name" required>
+            </label>
+            <label for="email">
+              <h2>Email Id:</h2>
+              <input name="email" type="email" placeholder="tonystark@gmail.com" id="email" required>
+            </label>
+            <label for="password">
+              <h2>Password:</h2>
+              <input name="password" type="password" id="password" required>
+            </label>
+            <br>
+            <input type="submit" id="submit">
+          </form>
+          {% include "error.html" %}
+          <div class="loader" style="display: none;"></div>
+          <div class="errorBlock"></div>
+          <p style="text-align: center;">Click here to <a href="/login">login</a> if already registered</p>
+        </div>
+      </div>
+    </main>
+    <footer>
+      {% include "footer.html" %}
+    </footer>
+    <script type="module" src="/static/js/auth.js"></script>
+    <script type="module" src="/static/js/script.js"></script>
+    <script type="module" src="/static/js/utility.js"></script>
+  </body>
+</html>

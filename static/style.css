@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* header h1{
+  text-align: center;
+  border-bottom: 2px solid black;
+  color: white;
+  background-color: rgb(23, 23, 51);
+} */
+/* 
+header{
+  height: 39px;
+} */
+
+.outter {
+  padding:2rem 1rem 1rem 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+
+body {
+  height: 100vh;
+  display:flex;
+  flex-direction: column;
+
+}
+
+input {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+main {
+  background-image:url("/static/auth_background.jpg");
+  background-size: cover;
+  height: 100%;
+}
+
+/* footer {
+  border-top: 2px solid white;
+  height: 3rem;
+  text-align: center;
+  padding-top: 1rem;
+  background-color:rgb(23, 23, 51);
+  color: white;
+} */
+
+
+#submit {
+  border: 1px transparent black;
+  padding: 2px;
+  border-radius: .2rem;
+  margin-top: 15px;
+}
+
+.inner{
+  width: 250px;
+  /* width: 80%; */
+}
+
+.alert{
+  padding-bottom: 1rem;
+}
+
+.alert-success{
+  color: rgb(48, 178, 48);
+}
+
+.alert-error{
+  color: red;
+}
+
+.errorBlock{
+  color: red;
+  padding-bottom: 1rem;
+}
+
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+  border-top: 2px solid rgb(23, 23, 51);
+  border-radius: 50%;
+  animation: loaderAnimate 1s ease-in-out 0s infinite normal;
+  margin-left: 100px;
+  margin-top: 10px;
+}
+
+@keyframes loaderAnimate{
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.inner label {
+  /* display: block; */
+  margin-top: 10px;
+}
+
+
+
+nav .log-in-out a {
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding: 3px;
+  margin-right:5px;
+  display: none;
+}
+
+nav #login{
+  color:green;
+  border-color: green;
+}
+
+nav #logout{
+  color:red;
+  border-color: red;
+}
+
+nav #login:hover{
+  color:white;
+  background-color: green;
+}
+
+nav #logout:hover{
+  color:white;
+  background-color: red;
+}
+
+.applied-jobs .apply-btn{
+  display: none;
+}
